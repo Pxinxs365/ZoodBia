@@ -19,27 +19,7 @@ import org.koin.compose.KoinContext
 fun App() {
     MaterialTheme {
         KoinContext {
-            val viewModel = koinViewModel<MainViewModel>()
-            val uiState = viewModel.uiState.collectAsState().value
-
-            var showContent by remember { mutableStateOf(false) }
-            Column(Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
-                Button(onClick = { showContent = !showContent }) {
-                    Text("Click me!")
-                }
-                AnimatedVisibility(showContent) {
-                    Column(
-                        Modifier.fillMaxWidth(),
-                        horizontalAlignment = Alignment.CenterHorizontally
-                    ) {
-                        LazyColumn {
-                            items(uiState.products) { item ->
-                                Text(item)
-                            }
-                        }
-                    }
-                }
-            }
+            WelcomeScreen()
         }
     }
 }
