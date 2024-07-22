@@ -1,7 +1,9 @@
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.paint
 import androidx.compose.ui.graphics.Color
@@ -13,7 +15,7 @@ import androidx.compose.ui.text.style.TextAlign
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import zoodbia.composeapp.generated.resources.Res
-import zoodbia.composeapp.generated.resources.welcome_bg
+import zoodbia.composeapp.generated.resources.*
 
 @Composable
 @Preview
@@ -26,6 +28,18 @@ fun WelcomeScreen() {
             modifier = Modifier.fillMaxSize().padding(horizontal = 16.dp),
             verticalArrangement = Arrangement.Bottom
         ) {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(60.dp),
+                contentAlignment = Alignment.Center
+            ) {
+                Image(
+                    painter = painterResource(Res.drawable.logo),
+                    contentDescription = "Logo",
+                    modifier = Modifier.width(80.dp).height(60.dp)
+                )
+            }
             Text(
                 text = "Welcome\nto ZoodBia",
                 fontSize = 48.sp,
