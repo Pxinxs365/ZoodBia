@@ -1,11 +1,13 @@
 package org.example.zoodbia.ui.main
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
-import org.example.zoodbia.domain.GetMainProductsUseCase
+import kotlinx.coroutines.launch
+import org.example.zoodbia.domain.usecases.GetMainProductsUseCase
 
 class MainViewModel(
     private val getMainProductsUseCase: GetMainProductsUseCase
@@ -14,8 +16,12 @@ class MainViewModel(
     private val _uiState = MutableStateFlow(UiState())
     val uiState: StateFlow<UiState> = _uiState.asStateFlow()
 
-    init {
-        _uiState.update { it.copy(products = getMainProductsUseCase.execute()) }
+    fun makeRequest() {
+        viewModelScope.launch {
+            runCatching {
+                _uiState.update { it.copy(products = getMainProductsUseCase.execute()) }
+            }
+        }
     }
 
     data class UiState(

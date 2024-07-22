@@ -18,8 +18,7 @@ import zoodbia.composeapp.generated.resources.Res
 import zoodbia.composeapp.generated.resources.*
 
 @Composable
-@Preview
-fun WelcomeScreen() {
+internal fun WelcomeScreen() {
     Box(
         modifier = Modifier.fillMaxSize()
             .paint(painterResource(Res.drawable.welcome_bg), contentScale = ContentScale.FillHeight)
@@ -40,8 +39,17 @@ fun WelcomeScreen() {
                     modifier = Modifier.width(80.dp).height(60.dp)
                 )
             }
+            // TODO: combine into one Text component
             Text(
-                text = "Welcome\nto ZoodBia",
+                text = "Welcome",
+                fontSize = 48.sp,
+                fontWeight = FontWeight.Medium,
+                textAlign = TextAlign.Center,
+                color = Color.White,
+                modifier = Modifier.fillMaxWidth()
+            )
+            Text(
+                text = "to ZoodBia",
                 fontSize = 48.sp,
                 fontWeight = FontWeight.Medium,
                 textAlign = TextAlign.Center,
@@ -74,4 +82,10 @@ fun WelcomeScreen() {
             Spacer(modifier = Modifier.height(80.dp))
         }
     }
+}
+
+@Preview
+@Composable
+private fun WelcomeScreenPreview() {
+    WelcomeScreen()
 }
