@@ -12,6 +12,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.navigation.NavHostController
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import zoodbia.composeapp.generated.resources.Res
@@ -19,7 +20,9 @@ import zoodbia.composeapp.generated.resources.*
 
 @Composable
 @Preview
-fun WelcomeScreen() {
+fun WelcomeScreen(
+    navHostController: NavHostController
+) {
     Box(
         modifier = Modifier.fillMaxSize()
             .paint(painterResource(Res.drawable.welcome_bg), contentScale = ContentScale.FillHeight)
@@ -57,7 +60,7 @@ fun WelcomeScreen() {
             )
 
             Button(
-                onClick = { /* Handle login button click */ },
+                onClick = { navHostController.navigate("Login") },
                 modifier = Modifier.fillMaxWidth(),
                 shape = RoundedCornerShape(20.dp),
                 colors = ButtonDefaults.buttonColors(backgroundColor = PrimaryTeal)
