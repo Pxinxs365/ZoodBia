@@ -19,7 +19,7 @@ import org.koin.compose.KoinContext
 fun App() {
     MaterialTheme {
         KoinContext {
-            WelcomeScreen()
+            Navigation()
         }
     }
 }
