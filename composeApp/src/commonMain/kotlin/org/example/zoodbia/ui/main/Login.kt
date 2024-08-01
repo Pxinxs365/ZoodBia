@@ -1,6 +1,7 @@
 package org.example.zoodbia.ui.main
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
@@ -9,8 +10,6 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.SpanStyle
-import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.text.font.FontWeight
@@ -19,8 +18,6 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.withStyle
-import androidx.navigation.NavHostController
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import zoodbia.composeapp.generated.resources.Res
@@ -36,7 +33,8 @@ fun LoginScreen(
     var passwordVisible by remember { mutableStateOf(false) }
 
     Column(
-        modifier = Modifier.fillMaxSize().padding(horizontal = 16.dp),
+        modifier = Modifier.fillMaxSize().padding(16.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Top
     ) {
         Text(
@@ -47,25 +45,25 @@ fun LoginScreen(
             modifier = Modifier.fillMaxWidth().padding(bottom = 8.dp)
         )
 
-        TextButton(
-            onClick = {
-                navigateToSignUp()
-            },
-            modifier = Modifier.align(Alignment.CenterHorizontally)
+        Row(
+            modifier = Modifier.fillMaxWidth().padding(bottom = 20.dp),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Center
         ) {
             Text(
-                text = buildAnnotatedString {
-                    withStyle(style = SpanStyle(color = Color(0xFF009959))) {
-                        append("New to ZoodBia? ")
-                    }
-                    withStyle(style = SpanStyle(color = Color(0xFFEB5640))) {
-                        append("Sign Up")
-                    }
+                text = "New to ZoodBia?",
+                color = Color(0xFF009959),
+                fontSize = 16.sp,
+            )
+            Spacer(modifier = Modifier.width(4.dp))
+            Text(
+                modifier = Modifier.clickable {
+                    navigateToSignUp()
                 },
+                text = "Sign Up",
+                color = Color(0xFFEB5640),
                 fontSize = 16.sp,
                 fontWeight = FontWeight.SemiBold,
-                textAlign = TextAlign.Center,
-                modifier = Modifier.fillMaxWidth().padding(bottom = 20.dp)
             )
         }
 

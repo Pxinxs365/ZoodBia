@@ -45,23 +45,18 @@ fun WelcomeScreen(
                     modifier = Modifier.width(80.dp).height(60.dp)
                 )
             }
-            // TODO: combine into one Text component
-            Text(
-                text = "Welcome",
-                fontSize = 48.sp,
-                fontWeight = FontWeight.Medium,
-                textAlign = TextAlign.Center,
-                color = Color.White,
-                modifier = Modifier.fillMaxWidth()
-            )
-            Text(
-                text = "to ZoodBia",
-                fontSize = 48.sp,
-                fontWeight = FontWeight.Medium,
-                textAlign = TextAlign.Center,
-                color = Color.White,
-                modifier = Modifier.fillMaxWidth()
-            )
+
+            Column(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text("Welcome", fontSize = 48.sp,
+                    fontWeight = FontWeight.Medium, color = Color.White)
+
+                Text("to ZoodBia", fontSize = 48.sp,
+                    fontWeight = FontWeight.Medium, color = Color.White)
+            }
+
             Text(
                 text = "Get your groceries within the same day",
                 fontSize = 16.sp,
