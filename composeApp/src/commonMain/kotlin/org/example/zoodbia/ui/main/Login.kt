@@ -1,3 +1,5 @@
+package org.example.zoodbia.ui.main
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -18,6 +20,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.withStyle
+import androidx.navigation.NavHostController
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import zoodbia.composeapp.generated.resources.Res
@@ -25,7 +28,7 @@ import zoodbia.composeapp.generated.resources.*
 
 @Composable
 @Preview
-fun LoginScreen() {
+fun LoginScreen(navHostController: NavHostController) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var passwordVisible by remember { mutableStateOf(false) }
@@ -44,7 +47,7 @@ fun LoginScreen() {
 
         TextButton(
             onClick = {
-                // TODO: Handle sign up action
+                navHostController.navigate("SignUp")
             },
             modifier = Modifier.align(Alignment.CenterHorizontally)
         ) {
