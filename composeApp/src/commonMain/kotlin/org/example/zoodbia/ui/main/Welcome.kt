@@ -23,7 +23,7 @@ import zoodbia.composeapp.generated.resources.*
 @Composable
 @Preview
 fun WelcomeScreen(
-    navHostController: NavHostController
+    navigateToLogin: () -> Unit
 ) {
     Box(
         modifier = Modifier.fillMaxSize()
@@ -71,7 +71,7 @@ fun WelcomeScreen(
             )
 
             Button(
-                onClick = { navHostController.navigate("Login") },
+                onClick = { navigateToLogin() },
                 modifier = Modifier.fillMaxWidth(),
                 shape = RoundedCornerShape(20.dp),
                 colors = ButtonDefaults.buttonColors(backgroundColor = PrimaryTeal)

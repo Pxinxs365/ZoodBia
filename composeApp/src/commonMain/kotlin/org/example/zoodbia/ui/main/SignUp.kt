@@ -1,5 +1,6 @@
 package org.example.zoodbia.ui.main
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
@@ -24,7 +25,9 @@ import zoodbia.composeapp.generated.resources.*
 
 @Composable
 @Preview
-fun SignUpScreen() {
+fun SignUpScreen(
+    popUp: () -> Unit
+) {
     var firstName by remember { mutableStateOf("") }
     var lastName by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("") }
@@ -163,6 +166,9 @@ fun SignUpScreen() {
             )
             Spacer(modifier = Modifier.width(4.dp))
             Text(
+                modifier = Modifier.clickable {
+                    popUp()
+                },
                 text = "Login here",
                 color = PrimaryTeal,
             )

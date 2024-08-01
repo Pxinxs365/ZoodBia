@@ -28,7 +28,9 @@ import zoodbia.composeapp.generated.resources.*
 
 @Composable
 @Preview
-fun LoginScreen(navHostController: NavHostController) {
+fun LoginScreen(
+    navigateToSignUp: () -> Unit
+) {
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
     var passwordVisible by remember { mutableStateOf(false) }
@@ -47,20 +49,20 @@ fun LoginScreen(navHostController: NavHostController) {
 
         TextButton(
             onClick = {
-                navHostController.navigate("SignUp")
+                navigateToSignUp()
             },
             modifier = Modifier.align(Alignment.CenterHorizontally)
         ) {
             Text(
                 text = buildAnnotatedString {
-                withStyle(style = SpanStyle(color = Color(0xFF009959))) {
-                    append("New to ZoodBia? ")
-                }
-                withStyle(style = SpanStyle(color = Color(0xFFEB5640))) {
-                    append("Sign Up")
-                }
-            },
-            fontSize = 16.sp,
+                    withStyle(style = SpanStyle(color = Color(0xFF009959))) {
+                        append("New to ZoodBia? ")
+                    }
+                    withStyle(style = SpanStyle(color = Color(0xFFEB5640))) {
+                        append("Sign Up")
+                    }
+                },
+                fontSize = 16.sp,
                 fontWeight = FontWeight.SemiBold,
                 textAlign = TextAlign.Center,
                 modifier = Modifier.fillMaxWidth().padding(bottom = 20.dp)
@@ -161,7 +163,7 @@ fun LoginScreen(navHostController: NavHostController) {
                     "Hide"
                 else
                     "Show"
-                
+
                 TextButton(
                     onClick = { passwordVisible = !passwordVisible }
                 ) {
