@@ -50,11 +50,15 @@ fun WelcomeScreen(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Text("Welcome", fontSize = 48.sp,
-                    fontWeight = FontWeight.Medium, color = Color.White)
+                Text(
+                    "Welcome", fontSize = 48.sp,
+                    fontWeight = FontWeight.Medium, color = Color.White
+                )
 
-                Text("to ZoodBia", fontSize = 48.sp,
-                    fontWeight = FontWeight.Medium, color = Color.White)
+                Text(
+                    "to ZoodBia", fontSize = 48.sp,
+                    fontWeight = FontWeight.Medium, color = Color.White
+                )
             }
 
             Text(
