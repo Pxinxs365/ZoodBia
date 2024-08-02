@@ -92,5 +92,7 @@ fun WelcomeScreen(
 @Preview
 @Composable
 private fun WelcomeScreenPreview() {
-    WelcomeScreen()
+    WelcomeScreen(
+        navigateToLogin = {}
+    )
 }

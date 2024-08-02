@@ -6,5 +6,5 @@ sealed class AppNavigation(
     val route: String, val arguments: List<NamedNavArgument>
 ) {
     
-    data object Splash: AppNavigation(route = "Splash", arguments = emptyList())
+    data object Auth: AppNavigation(route = "Auth", arguments = emptyList())
 }
