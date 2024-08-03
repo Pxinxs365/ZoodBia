@@ -15,6 +15,8 @@ fun App() {
         val uiState = viewModel.uiState.collectAsState().value
 
         WelcomeScreen()
+        
+        Navigation()
         // }
     }
 }
