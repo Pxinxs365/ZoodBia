@@ -1,4 +1,4 @@
-import org.jetbrains.compose.desktop.application.dsl.TargetFormat
+//import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.ExperimentalKotlinGradlePluginApi
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
@@ -18,7 +18,7 @@ kotlin {
             jvmTarget.set(JvmTarget.JVM_11)
         }
     }
-    
+
     listOf(
         iosX64(),
         iosArm64(),
@@ -29,7 +29,7 @@ kotlin {
             isStatic = true
         }
     }
-    
+
     sourceSets {
         androidMain.dependencies {
             implementation(compose.preview)
@@ -37,6 +37,22 @@ kotlin {
             // Koin DI
             implementation(libs.koin.android)
             implementation(libs.koin.androidx.compose)
+            // Kotlin Coroutines
+            // implementation(libs.kotlinx.coroutines.android)
+            // Network
+            implementation(libs.ktor.client.okhttp)
+            // implementation(libs.ktor.client.json) // todo need?
+            // implementation(libs.ktor.serialization) // todo need?
+            implementation(libs.ktor.serialization.kotlinx.json)
+            implementation(libs.ktor.client.content.negotiation)
+            // Logging
+            implementation(libs.napier)
+        }
+        iosMain.dependencies {
+            // Network
+            implementation(libs.ktor.client.darwin)
+            // Logging
+            implementation(libs.napier)
         }
         commonMain.dependencies {
             // Compose UI
@@ -55,6 +71,14 @@ kotlin {
             implementation(libs.lifecycle.viewmodel)
             // Navigation
             implementation(libs.navigation.compose)
+            // Network
+            implementation(libs.ktor.client.core)
+            // implementation(libs.ktor.client.json) // todo need?
+            implementation(libs.ktor.client.logging)
+            // Logging
+            implementation(libs.napier)
+            // Other
+            implementation(libs.serialization.json)
         }
     }
 }

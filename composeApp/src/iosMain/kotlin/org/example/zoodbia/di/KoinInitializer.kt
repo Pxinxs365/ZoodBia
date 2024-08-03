@@ -9,7 +9,9 @@ actual class KoinInitializer {
                 appModule,
                 viewModelModule,
                 useCasesModule,
-                repositoriesModule
+                repositoriesModule,
+                apisModule,
+                httpClientModule
             )
         }
     }
