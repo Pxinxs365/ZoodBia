@@ -1,11 +1,11 @@
 package org.example.zoodbia
 
-import App
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.material.MaterialTheme
+import org.example.zoodbia.di.koinViewModel
+import org.example.zoodbia.ui.main.MainViewModel
 
 class MainActivity : ComponentActivity() {
 
@@ -13,13 +13,11 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            App()
+            MaterialTheme {
+                // TODO: For future usage of ViewModel
+                val viewModel = koinViewModel<MainViewModel>()
+                MainActivityContent(viewModel)
+            }
         }
     }
-}
-
-@Preview
-@Composable
-fun AppAndroidPreview() {
-    App()
 }

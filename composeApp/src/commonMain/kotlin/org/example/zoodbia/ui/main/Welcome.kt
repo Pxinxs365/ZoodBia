@@ -1,3 +1,5 @@
+package org.example.zoodbia.ui.main
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -21,7 +23,7 @@ import zoodbia.composeapp.generated.resources.*
 @Composable
 @Preview
 fun WelcomeScreen(
-    navHostController: NavHostController
+    navigateToLogin: () -> Unit
 ) {
     Box(
         modifier = Modifier.fillMaxSize()
@@ -43,23 +45,22 @@ fun WelcomeScreen(
                     modifier = Modifier.width(80.dp).height(60.dp)
                 )
             }
-            // TODO: combine into one Text component
-            Text(
-                text = "Welcome",
-                fontSize = 48.sp,
-                fontWeight = FontWeight.Medium,
-                textAlign = TextAlign.Center,
-                color = Color.White,
-                modifier = Modifier.fillMaxWidth()
-            )
-            Text(
-                text = "to ZoodBia",
-                fontSize = 48.sp,
-                fontWeight = FontWeight.Medium,
-                textAlign = TextAlign.Center,
-                color = Color.White,
-                modifier = Modifier.fillMaxWidth()
-            )
+
+            Column(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text(
+                    "Welcome", fontSize = 48.sp,
+                    fontWeight = FontWeight.Medium, color = Color.White
+                )
+
+                Text(
+                    "to ZoodBia", fontSize = 48.sp,
+                    fontWeight = FontWeight.Medium, color = Color.White
+                )
+            }
+
             Text(
                 text = "Get your groceries within the same day",
                 fontSize = 16.sp,
@@ -69,7 +70,7 @@ fun WelcomeScreen(
             )
 
             Button(
-                onClick = { navHostController.navigate("Login") },
+                onClick = { navigateToLogin() },
                 modifier = Modifier.fillMaxWidth(),
                 shape = RoundedCornerShape(20.dp),
                 colors = ButtonDefaults.buttonColors(backgroundColor = PrimaryTeal)
@@ -91,5 +92,7 @@ fun WelcomeScreen(
 @Preview
 @Composable
 private fun WelcomeScreenPreview() {
-    WelcomeScreen()
+    WelcomeScreen(
+        navigateToLogin = {}
+    )
 }
