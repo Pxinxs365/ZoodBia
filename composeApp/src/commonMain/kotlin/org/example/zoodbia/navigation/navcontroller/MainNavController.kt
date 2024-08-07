@@ -118,7 +118,7 @@ fun BottomNavigation(navController: NavController) {
                     selected = it.route == currentRoute,
                     icon = {
                         Icon(
-                            painterResource(if (it.route == currentRoute) it.selectedIcon else it.unselectedIcon),
+                            painterResource(it.icon),
                             it.title,
                             modifier = Modifier.width(24.dp).height(24.dp)
                         )
