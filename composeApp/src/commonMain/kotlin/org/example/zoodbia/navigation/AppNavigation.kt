@@ -7,4 +7,6 @@ sealed class AppNavigation(
 ) {
     
     data object Auth: AppNavigation(route = "Auth", arguments = emptyList())
+
+    data object Main: AppNavigation(route = "Main", arguments = emptyList())
 }

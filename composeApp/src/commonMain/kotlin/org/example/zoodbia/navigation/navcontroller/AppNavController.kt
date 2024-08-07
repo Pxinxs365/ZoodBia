@@ -8,6 +8,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import org.example.zoodbia.navigation.AppNavigation
+import org.example.zoodbia.navigation.MainNavigation
 
 @Composable
 internal fun AppNavController() {
@@ -20,7 +21,14 @@ internal fun AppNavController() {
             modifier = Modifier.fillMaxSize()
         ) {
             composable(route = AppNavigation.Auth.route) {
-                AuthNavController()
+                AuthNavController(navigateToMain = {
+                    navigator.popBackStack()
+                    navigator.navigate(AppNavigation.Main.route)
+                })
+            }
+
+            composable(route = AppNavigation.Main.route) {
+                MainNavController()
             }
         }
     }
