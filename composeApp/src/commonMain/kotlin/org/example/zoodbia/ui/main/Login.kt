@@ -26,6 +26,7 @@ import zoodbia.composeapp.generated.resources.*
 @Composable
 @Preview
 fun LoginScreen(
+    navigationToMain: () -> Unit,
     navigateToSignUp: () -> Unit
 ) {
     var email by remember { mutableStateOf("") }
@@ -185,7 +186,7 @@ fun LoginScreen(
         )
 
         Button(
-            onClick = { /* TODO: Handle login button click */ },
+            onClick = { navigationToMain() },
             modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp),
             shape = RoundedCornerShape(100.dp),
             colors = ButtonDefaults.buttonColors(backgroundColor = PrimaryTeal)
